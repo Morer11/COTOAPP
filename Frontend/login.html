@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COTOAPP - Login</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      margin: 0; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      color: #333;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: #0057b8;
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #004494;
+    }
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+    }
+    input[type="email"], button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+    input[type="email"]:focus {
+      outline: none;
+      border-color: #0057b8;
+      box-shadow: 0 0 5px rgba(0, 87, 184, 0.5);
+    }
+    button {
+      background-color: #0057b8;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    button:hover:not(:disabled) {
+      background-color: #004494;
+    }
+    button:disabled {
+      background-color: #7a7a7a;
+      cursor: not-allowed;
+    }
+    #message {
+      min-height: 1.5em;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #0057b8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .google-btn {
+      display: inline-block;
+      background: white;
+      color: black;
+      padding: 12px 20px;
+      font-weight: 700;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      border: none;
+    }
+    .google-btn:hover {
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>COTOAPP 📱
+  </h1>
+  <h2>Login</h2>
+
+  <form id="loginForm">
+    <input id="emailInput" type="email" name="email" placeholder="📨Enter your email" required />
+    <button type="submit">🔓Login</button>
+  </form>
+
+  <div id="message"></div>
+
+  <a class="google-btn" href="/auth/google" role="button" aria-label="Login with Google">
+  <svg viewBox="-3 0 262 262" xmlns="http://www.w3.org/2000/svg" width="40px" preserveAspectRatio="xMidYMid" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"></path><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"></path><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"></path><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"></path></g></svg> Continue with Google
+  </a>
+
+  <a href="register.html">No account? Register here</a>
+
+  <script>
+    const messageEl = document.getElementById('message');
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      if (!email) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Please enter your email.';
+        return;
+      }
+      messageEl.textContent = 'Logging in...';
+      try {
+        const res = await fetch('/login-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok) {
+          messageEl.style.color = 'green';
+          messageEl.textContent = 'Login successful! Redirecting...';
+          setTimeout(() => { window.location.href = '/upload.html'; }, 1500);
+        } else {
+          const text = await res.text();
+          messageEl.style.color = 'red';
+          messageEl.textContent = text;
+        }
+      } catch (err) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Login failed.';
+      }
+    });
+  </script>
+  
+
+</body>
+</html>

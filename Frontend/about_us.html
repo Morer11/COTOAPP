@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COTOAPP - About Us</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <button id="toggle-btn">📶</button>
+    <ul id="nav-links">
+        <li><a href="myapks.html">📲My APKs</a>  </li> <br>
+        <li><a href="upload.html">⏳Update APK</a> </li>     <br>   
+        <li><a href="about_us.html">🔎About Us</a></li><br>
+        <li><a href="login.html">🔏logout</a></li>
+        
+    </ul>
+    <h1>COTOAPP📱</h1>
+  <h1>About Us</h1>
+  <p>Welcome to COTOAPP! We provide a platform for users to generate APKs from their web applications easily.</p>
+  <p>Our mission is to simplify the process of app development and deployment.</p>
+  <p>For any inquiries, please contact us at support@cotoapp.com.</p>
+
+  <script>
+    
+    document.getElementById('toggle-btn').addEventListener('click', () => {
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+            }
+        });
+  </script>
+
+  <style>
+      body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+         h1{
+            color:#0057b8;
+            }
+    .navbar {
+      position: relative;
+      background-color: #0057b8;
+      padding: 10px;
+      color: white;
+    }
+    #menu {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    #menu a, #logoutBtn {
+      color: #0057b8;
+      text-decoration: none;
+      margin: 5px 0;
+    }
+    #menu.hidden {
+      display: none;
+    }
+      #toggle-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width:20px;
+        }
+
+        #nav-links {
+            position: fixed;
+            top: 50px;
+            left: 0px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        #nav-links li {
+            margin-right: 20px;
+        }
+
+        #nav-links li a {
+            text-decoration: none;
+            color: #337ab7;
+        }
+
+        #nav-links li a:hover {
+            color: #23527c;
+        }
+  </style>
+
+</body>
+</html>
