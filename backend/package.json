@@ -1,0 +1,27 @@
+{
+  "name": "cotoapp-backend",
+  "version": "1.0.0",
+  "description": "Backend server for COTOAPP supporting Google OAuth and email verification login with APK generation",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "connect-sqlite3": "^0.9.0",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "fs-extra": "^11.1.1",
+    "nodemailer": "^6.9.3",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "sharp": "^0.32.1",
+    "sqlite3": "^5.1.6",
+    "unzipper": "^0.10.14",
+    "xml2js": "^0.4.23"
+  }
+}
