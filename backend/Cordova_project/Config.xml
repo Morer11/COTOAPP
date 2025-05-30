@@ -1,0 +1,29 @@
+?xml version='1.0' encoding='utf-8'?>
+widget id="com.yourcompany.cotoapp" version="1.0.0"
+  xmlns="http://www.w3.org/ns/widgets"
+  xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+  name>COTOAPP/name>
+  description>Offline web content in Android Cordova app/description>
+  author email="youremail@example.com" href="http://yourwebsite.com">Your Name/author>
+
+  content src="index.html" />
+  access origin="*" />
+  
+  allow-intent href="http://*/*" />
+  allow-intent href="https://*/*" />
+
+  platform name="android">
+    icon density="ldpi" src="res/android/ic_launcher_foreground.png" />
+    icon density="mdpi" src="res/android/ic_launcher_monochrome.png" />
+    icon density="hdpi" src="res/android/ic_launcher.png" />
+    icon density="xhdpi" src="res/android/screen.png" />
+    icon density="xxhdpi" src="res/android/ic_launcher_monochrome.png" />
+    icon density="xxxhdpi" src="res/android/screen.png" />
+
+    allow-intent href="market:*" />
+    preference name="loadUrlTimeoutValue" value="700000" />
+    preference name="AndroidPersistentFileLocation" value="Internal" />
+  /platform>
+
+</widget>
